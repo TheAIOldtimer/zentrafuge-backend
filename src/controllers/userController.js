@@ -1,15 +1,15 @@
 const admin = require('firebase-admin');
 const firebaseConfig = require('../config/firebase');
 
-// Initialize Firebase if not already initialized
+// Initialize Firebase
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
-      projectId: firebaseConfig.projectId,
+      projectId: process.env.FIREBASE_PROJECT_ID,
       clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY
+      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')
     }),
-    databaseURL: `https://${firebaseConfig.projectId}.firebaseio.com`
+    databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`
   }) ;
 }
 

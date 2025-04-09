@@ -11,8 +11,6 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-const cors = require('cors');
-
 // Add this near the top of your Express app setup
 app.use(cors({
   origin: ['http://localhost:3000', 'https://luxury-florentine-266c87.netlify.app'],

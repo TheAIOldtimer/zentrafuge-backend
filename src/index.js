@@ -11,7 +11,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+// Find this section in your index.js file
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://luxury-florentine-266c87.netlify.app'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}) );
 app.use(express.json());
 
 // Routes
